@@ -1,6 +1,6 @@
 services:
   tg-bot:
-    image: ghcr.io/example/tg-bot-italian:latest
+    image: ghcr.io/leomarlo/tg-bot-italian:latest
     container_name: tg-bot-italian
     env_file:
       - .env
