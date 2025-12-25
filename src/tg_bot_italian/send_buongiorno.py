@@ -13,6 +13,14 @@ async def _async_send():
     bot = Bot(token=BOT_TOKEN)
     await bot.send_message(chat_id=CHAT_ID, text="com'è il tempo?")
 
+async def hello_reply(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    msg = update.message
+    if not msg or not msg.text:
+        return
+    if msg.text.strip().lower() in {"hello", "ciao", "buongiorno"}:
+        await msg.reply_text("buongiorno 👋")
+
+
 def main():
     asyncio.run(_async_send())
 

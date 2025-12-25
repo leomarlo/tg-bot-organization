@@ -26,7 +26,7 @@ QUESTIONS_PATH = BASE_DIR / "questions.txt"
 ANSWERS_PATH = BASE_DIR / "answers.txt"
 
 BOT_TOKEN = os.environ["BOT_TOKEN"]  # set in your server env
-WEBHOOK_SECRET_PATH = os.environ.get("WEBHOOK_SECRET_PATH", BOT_TOKEN)  # simple secret
+WEBHOOK_SECRET_PATH = os.environ.get("WEBHOOK_SECRET_PATH")  # simple secret
 # Example webhook URL: https://your-domain.com/webhook/<WEBHOOK_SECRET_PATH>
 
 # ----------------------------
@@ -256,6 +256,8 @@ def main():
         app.run_polling()
 
     elif mode == "webhook":
+        if not WEBHOOK_SECRET_PATH:
+            raise RuntimeError("WEBHOOK_SECRET_PATH must be set in webhook mode")   
         print("Starting Telegram bot (webhook via uvicorn)...")
         import uvicorn
         port = int(os.getenv("PORT", "8000"))

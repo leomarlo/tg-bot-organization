@@ -1,0 +1,12 @@
+services:
+  tg-bot:
+    build: .
+    container_name: tg-bot-italian
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src/tg_bot_italian/data:/app/src/tg_bot_italian/data
+    restart: unless-stopped
+    
