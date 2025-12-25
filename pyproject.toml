@@ -1,0 +1,25 @@
+[project]
+name = "tg-bot-italian"
+version = "0.1.0"
+description = "TG Bot for Learning Italian"
+authors = [
+    {name = "Leonhard Horstmeyer",email = "leo.h@hotmail.de"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "python-telegram-bot (>=22.5,<23.0)",
+    "fastapi (>=0.124.4,<0.125.0)",
+    "uvicorn (>=0.38.0,<0.39.0)"
+]
+
+[project.scripts]
+tg-bot = "tg_bot_italian.main:main"
+tg-bot-polling = "tg_bot_italian.polling_bot:main"
+tg-bot-buongiorno = "tg_bot_italian.send_buongiorno:main"
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
