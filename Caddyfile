@@ -1,0 +1,3 @@
+ludzu.maatenaatre.lv {
+  reverse_proxy tg-bot:8000
+}

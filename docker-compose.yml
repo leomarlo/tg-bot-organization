@@ -1,0 +1,27 @@
+services:
+  tg-bot:
+    image: ghcr.io/example/tg-bot-italian:latest
+    container_name: tg-bot-italian
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/src/tg_bot_italian/data
+    restart: unless-stopped
+    expose:
+      - "8000"
+
+  caddy:
+    image: caddy:2
+    container_name: caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    restart: unless-stopped
+
+volumes:
+  caddy_data:
+  caddy_config:
