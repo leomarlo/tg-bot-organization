@@ -8,6 +8,7 @@ from typing import Dict, Any, List, Tuple
 
 from fastapi import FastAPI, Request, Response
 from http import HTTPStatus
+import httpx
 
 from telegram import Update, ForceReply
 from telegram.ext import (
@@ -24,6 +25,10 @@ PENDING_PATH = DATA_DIR / "pending.json"
 LOG_PATH = DATA_DIR / "log.jsonl"
 QUESTIONS_PATH = BASE_DIR / "questions.txt"
 ANSWERS_PATH = BASE_DIR / "answers.txt"
+
+LLM_SERVICE_URL = os.getenv("LLM_SERVICE_URL", "http://localhost:8001")
+LLM_TIMEOUT_S = float(os.getenv("LLM_TIMEOUT_S", "10"))
+
 
 BOT_TOKEN = os.environ["BOT_TOKEN"]  # set in your server env
 WEBHOOK_SECRET_PATH = os.environ.get("WEBHOOK_SECRET_PATH")  # simple secret
@@ -90,6 +95,33 @@ def _pick_question() -> Tuple[str, str, str]:
 def _pick_bot_reply() -> str:
     raw = _load_lines(ANSWERS_PATH)
     return random.choice(raw) if raw else "Thanks!"
+
+async def _evaluate_with_llm_service(qid: str, direction: str, sentence: str, user_answer: str) -> str:
+    payload = {
+        "qid": qid,
+        "direction": direction,
+        "source": sentence,
+        "user_answer": user_answer,
+    }
+    try:
+        async with httpx.AsyncClient(timeout=LLM_TIMEOUT_S) as client:
+            r = await client.post(f"{LLM_SERVICE_URL}/v1/evaluate", json=payload)
+            r.raise_for_status()
+            data = r.json()
+            # Keep reply simple for now
+            feedback = data.get("feedback", "✅ Received.")
+            correct = data.get("correct")
+            score = data.get("score")
+            extra = []
+            if score is not None:
+                extra.append(f"Score: {score}")
+            if correct:
+                extra.append(f"Correct: {correct}")
+            return feedback + ("\n\n" + "\n".join(extra) if extra else "")
+    except Exception:
+        # fallback
+        return "✅ Received.\n\n🤖 (LLM service unavailable — using fallback reply)"
+
 
 # ----------------------------
 # Core function: ask()
@@ -188,7 +220,12 @@ async def on_text(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     _save_pending(pending)
 
     user_answer = msg.text.strip()
-    bot_reply = _pick_bot_reply()
+    bot_reply = await _evaluate_with_llm_service(
+        qid=record.get("qid", ""),
+        direction=record.get("direction", "EN"),
+        sentence=record.get("sentence", ""),
+        user_answer=user_answer,
+    )
 
     # Send a PoC response (later you replace this with ChatGPT evaluation/correction)
     await msg.reply_text(f"✅ Received.\n\n🤖 {bot_reply}")
