@@ -2,3 +2,6 @@
 
 
 poetry.lock
+
+*.pyc 
+*__pycache__*

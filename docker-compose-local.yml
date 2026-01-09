@@ -2,11 +2,42 @@ services:
   tg-bot:
     build: .
     container_name: tg-bot-italian
-    env_file:
-      - .env
+    env_file: [.env]
+    environment:
+      - MODE=webhook
+      - PORT=8000
+      - LLM_SERVICE_URL=http://llm-service:8001
+      - LLM_TIMEOUT_S=10
     ports:
       - "8000:8000"
     volumes:
       - ./src/tg_bot_italian/data:/app/src/tg_bot_italian/data
     restart: unless-stopped
-    
+
+  llm-service:
+    build: .
+    container_name: llm-service
+    env_file: [.env]
+    environment:
+      - LLM_PROVIDER=ollama
+      - OLLAMA_URL=http://ollama:11434
+      - OLLAMA_MODEL=llama3.2:1b
+      - LLM_TIMEOUT_S=30
+    command: ["poetry", "run", "uvicorn", "llm_service.main:api", "--host", "0.0.0.0", "--port", "8001"]
+    ports:
+      - "8001:8001"
+    restart: unless-stopped
+    depends_on:
+      - ollama
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+volumes:
+  ollama_data:

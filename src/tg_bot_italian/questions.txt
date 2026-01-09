@@ -1,39 +1,39 @@
-Mi chiamo Marco e vivo a Roma.
-Oggi fa bel tempo, ma domani potrebbe piovere.
-Vorrei un caffè senza zucchero, per favore.
-A che ora parte il treno per Milano?
-Ho dimenticato le chiavi a casa.
-Sto imparando l’inglese per lavoro.
-Puoi parlare più lentamente, per favore?
-Non ho capito la domanda.
-Mi piace leggere libri la sera.
-Ieri sono andato al supermercato.
-Domani devo svegliarmi presto.
-Quanto costa questo biglietto?
-Dov’è la fermata dell’autobus più vicina?
-Hai tempo per un incontro domani?
-Mi puoi aiutare con questo esercizio?
-Sono stanco, ma devo finire il progetto.
-Che cosa fai nel tempo libero?
-Mi piacerebbe visitare Firenze in primavera.
-Ho bisogno di prenotare un tavolo per due.
-Il Wi-Fi non funziona bene qui.
-Scusa, puoi ripetere?
-Oggi ho lavorato fino a tardi.
-Non vedo l’ora di partire per le vacanze.
-Ho perso il portafoglio.
-Puoi consigliarmi un buon ristorante?
-Sto cercando un appartamento in affitto.
-Mi fa male la testa da stamattina.
-Preferisco andare a piedi invece di prendere la macchina.
-Il film è stato molto interessante.
-Devo comprare del pane e del latte.
-Quanto tempo ci vuole per arrivare?
-Ti mando un messaggio più tardi.
-Mi piace cucinare la pasta.
-Ho appena finito di leggere quel romanzo.
-Non so dove ho messo il telefono.
-Puoi chiudere la finestra, per favore?
-Oggi è il compleanno di mia sorella.
-Sono in ritardo, scusami.
-Ci vediamo alle otto davanti al cinema.
+IT|Mi chiamo Marco e vivo a Roma.
+IT|Oggi fa bel tempo, ma domani potrebbe piovere.
+IT|Vorrei un caffè senza zucchero, per favore.
+IT|A che ora parte il treno per Milano?
+IT|Ho dimenticato le chiavi a casa.
+IT|Sto imparando l’inglese per lavoro.
+IT|Puoi parlare più lentamente, per favore?
+IT|Non ho capito la domanda.
+IT|Mi piace leggere libri la sera.
+IT|Ieri sono andato al supermercato.
+IT|Domani devo svegliarmi presto.
+IT|Quanto costa questo biglietto?
+IT|Dov’è la fermata dell’autobus più vicina?
+IT|Hai tempo per un incontro domani?
+IT|Mi puoi aiutare con questo esercizio?
+IT|Sono stanco, ma devo finire il progetto.
+IT|Che cosa fai nel tempo libero?
+IT|Mi piacerebbe visitare Firenze in primavera.
+IT|Ho bisogno di prenotare un tavolo per due.
+IT|Il Wi-Fi non funziona bene qui.
+IT|Scusa, puoi ripetere?
+IT|Oggi ho lavorato fino a tardi.
+IT|Non vedo l’ora di partire per le vacanze.
+IT|Ho perso il portafoglio.
+IT|Puoi consigliarmi un buon ristorante?
+IT|Sto cercando un appartamento in affitto.
+IT|Mi fa male la testa da stamattina.
+IT|Preferisco andare a piedi invece di prendere la macchina.
+IT|Il film è stato molto interessante.
+IT|Devo comprare del pane e del latte.
+IT|Quanto tempo ci vuole per arrivare?
+IT|Ti mando un messaggio più tardi.
+IT|Mi piace cucinare la pasta.
+IT|Ho appena finito di leggere quel romanzo.
+IT|Non so dove ho messo il telefono.
+IT|Puoi chiudere la finestra, per favore?
+IT|Oggi è il compleanno di mia sorella.
+IT|Sono in ritardo, scusami.
+IT|Ci vediamo alle otto davanti al cinema.
